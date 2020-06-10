@@ -8,6 +8,7 @@ const getLocation = function (cityName){
     
     superagent.get(url)
     .then(data =>{
+        console.log(data.body[0])
         let location = new Location (data.body[0])
     }) 
 }
