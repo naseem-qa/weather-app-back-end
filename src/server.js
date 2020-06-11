@@ -22,6 +22,10 @@ app.get('/weather', weatherHandler)
 
 function locationHandler(req,res) {
     getLocation('amman')
+      .then(locationInfo =>{
+        res.status(200).send(locationInfo);
+        // console.log('test',locationInfo);
+      })
       // console.log('ibrahim e5taser', req.query)
 }
 
