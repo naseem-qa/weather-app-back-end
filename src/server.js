@@ -5,32 +5,36 @@ require('dotenv').config();
 
 //Application dependencies
 const express = require('express');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 
 //application setup
 const app = express();
 app.use(cors());
+app.use(bodyParser.json());
 
 //our dependencies
 const getLocation = require('./location.js');
 const getWeather = require('./weather.js');
 
-//rout
-app.get('/location', locationHandler);
-app.get('/weather', weatherHandler)
+//routes
+app.post('/location', locationHandler);
+app.post('/weather', weatherHandler);
 
 
 function locationHandler(req,res) {
-    getLocation('amman')
+    getLocation(req.body.cityName)
       .then(locationInfo =>{
         res.status(200).send(locationInfo);
-        // console.log('test',locationInfo);
       })
-      // console.log('ibrahim e5taser', req.query)
 }
 
 function weatherHandler(req,res){
-  getWeather('31.9515694','35.9239625')
+  getWeather(req.body.lat, req.body.lng)
+  .then(weatherInfo=>{
+    res.status(200).send(weatherInfo);
+  })
+  console.log(req.body)
 }
 
 module.exports = {

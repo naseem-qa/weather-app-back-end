@@ -6,11 +6,11 @@ const superagent = require('superagent');
 const getWeather = function name(lat,long) {
     const url = `https://api.darksky.net/forecast/${process.env.DARKSKY_API_KEY}/${lat},${long}`
 
-    superagent.get(url)
+   return superagent.get(url)
     .then(data =>{
         // console.log(data.body.daily);
         return data.body.daily.data.map(oneDay =>{
-            return new  Weather(oneDay);
+            return new Weather(oneDay);
         })
     })
 }
