@@ -8,7 +8,6 @@ const getWeather = function name(lat,long) {
 
    return superagent.get(url)
     .then(data =>{
-        // console.log(data.body.daily);
         return data.body.daily.data.map(oneDay =>{
             return new Weather(oneDay);
         })
@@ -18,6 +17,7 @@ const getWeather = function name(lat,long) {
 function Weather (data){
     this.forecast=data.summary;
     this.time = new Date(data.time * 1000).toDateString();
+    this.icon = data.icon;
 }
 
 module.exports = getWeather;

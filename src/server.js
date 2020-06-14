@@ -32,9 +32,9 @@ function locationHandler(req,res) {
 function weatherHandler(req,res){
   getWeather(req.body.lat, req.body.lng)
   .then(weatherInfo=>{
+    console.log('nasa', weatherInfo);
     res.status(200).send(weatherInfo);
-  })
-  console.log(req.body)
+  });
 }
 
 module.exports = {
