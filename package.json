@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/naseem-qa/weather-app-back-end/issues"
   },
-  "homepage": "https://github.com/naseem-qa/weather-app-back-end#readme",
+  "homepage": "/",
   "dependencies": {
     "base-64": "^0.1.0",
     "bcryptjs": "^2.4.3",
